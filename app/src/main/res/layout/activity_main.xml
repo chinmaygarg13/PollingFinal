@@ -24,7 +24,8 @@
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/AppTheme.AppBarOverlay"
             app:title="New Poll"
-            app:navigationIcon="?attr/homeAsUpIndicator">
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            >
 
         </android.support.v7.widget.Toolbar>
 
@@ -32,7 +33,10 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-             >
+            app:tabIndicatorHeight="3dp"
+            app:tabTextColor="@color/white"
+            app:tabIndicatorColor="@color/white"
+            >
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tabItem"

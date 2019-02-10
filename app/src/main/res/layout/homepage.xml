@@ -33,6 +33,9 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:tabIndicatorColor="@color/white"
+            app:tabTextColor="@color/white"
+            app:tabIndicatorHeight="3dp"
              >
 
             <android.support.design.widget.TabItem
@@ -63,16 +66,5 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
 
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="29dp"
-        android:clickable="true"
-        android:src="@drawable/baseline_add_white_24"
-        app:backgroundTint="@color/colorPrimary"
-        app:layout_anchorGravity="bottom" />
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package com.example.akshay.tabbedactivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class HomePage extends AppCompatActivity {
+public class HomePage extends AppCompatActivity implements Tab1Pollfeed.OnFragmentInteractionListener,Tab2Groups.OnFragmentInteractionListener
+,Tab3Results.OnFragmentInteractionListener{
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
@@ -46,20 +48,13 @@ public class HomePage extends AppCompatActivity {
 
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //here
-                startActivity(new Intent(getApplicationContext(),AddPollPage.class));
-            }
-        });
-
 
 
     }
 
+    public void onFragmentInteraction(Uri uri){
+        //you can leave it empty
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -103,10 +98,10 @@ public class HomePage extends AppCompatActivity {
             // Return a PlaceholderFragment (defined as a static inner class below).
             switch (position){
                 case 0:
-                    Tab1Edit tab1 = new Tab1Edit();
+                    Tab1Pollfeed tab1 = new Tab1Pollfeed();
                     return tab1;
                 case 1:
-                    Tab2Send tab2 = new Tab2Send();
+                    Tab2Groups tab2 = new Tab2Groups();
                     return tab2;
                 case 2:
                     Tab3Results tab3 = new Tab3Results();
