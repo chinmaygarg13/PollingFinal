@@ -50,7 +50,7 @@
                 android:layout_marginStart="16dp"
 
                 android:text="by Person A"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/darker_gray"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/image"
                 app:layout_constraintStart_toEndOf="@id/image"
@@ -60,12 +60,13 @@
             <ImageView
                 android:id="@+id/deleteImage"
                 android:layout_width="34dp"
-                android:layout_height="54dp"
+                android:layout_height="44dp"
                 android:layout_marginEnd="32dp"
                 android:src="@drawable/baseline_delete_black_24"
                 app:layout_constraintBottom_toBottomOf="@id/image"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/image" />
+                app:layout_constraintTop_toTopOf="@id/image"
+                android:tint="@android:color/darker_gray"/>
 
             <View
                 android:layout_width="match_parent"
