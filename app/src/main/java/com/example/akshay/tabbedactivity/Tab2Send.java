@@ -1,6 +1,7 @@
 package com.example.akshay.tabbedactivity;
 
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +12,8 @@ public class Tab2Send extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tab2send, container, false);
+
+        FloatingActionButton fab = (FloatingActionButton)rootView.findViewById(R.id.fab);
 
         return rootView;
     }
