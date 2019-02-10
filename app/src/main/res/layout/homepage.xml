@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".HomePage"
-    >
+    tools:context=".HomePage">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -34,9 +33,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabIndicatorColor="@color/white"
-            app:tabTextColor="@color/white"
             app:tabIndicatorHeight="3dp"
-             >
+            app:tabTextColor="@color/white">
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tabItem"
@@ -63,8 +61,8 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        />
+        android:layout_below="@+id/appbar"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
 </RelativeLayout>

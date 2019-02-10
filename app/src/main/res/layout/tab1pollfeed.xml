@@ -7,32 +7,21 @@
     android:layout_height="match_parent"
     tools:context=".HomePage">
 
-    <TextView
-        android:id="@+id/section_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        app:layout_constraintLeft_toLeftOf="parent"
-         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintTop_creator="1"
-        android:text="Pollfeed"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/tab1RecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/poll_list_card"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="29dp"
-        android:clickable="true"
+        android:layout_marginBottom="24dp"
         android:src="@drawable/baseline_add_white_24"
         app:backgroundTint="@color/colorPrimary"
-        app:layout_anchorGravity="bottom"
-        tools:layout_editor_absoluteX="172dp"
-        tools:layout_editor_absoluteY="480dp" />
+        app:layout_anchorGravity="bottom|end" />
 
 </RelativeLayout>
