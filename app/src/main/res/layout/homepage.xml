@@ -72,7 +72,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="29dp"
         android:clickable="true"
-        android:src="@android:drawable/ic_input_add"
+        android:src="@drawable/baseline_add_white_24"
         app:backgroundTint="@color/colorPrimary"
         app:layout_anchorGravity="bottom" />
 </RelativeLayout>
