@@ -87,8 +87,34 @@
                 android:textSize="16sp"
                 />
 
+            <android.support.v7.widget.RecyclerView
+                tools:listitem="@layout/option_card"
+                android:id="@+id/option_recycleview"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/question"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/option_recycleview"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="12sp"
+                android:layout_marginStart="5dp"
+                android:text="posted 0 min ago"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/option_recycleview"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="12sp"
+                android:layout_marginEnd="5dp"
+                android:text="expires in 1 hour"/>
 
         </android.support.constraint.ConstraintLayout>
 

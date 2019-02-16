@@ -9,8 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.akshay.tabbedactivity.model.Poll;
+
 import com.example.akshay.tabbedactivity.R;
+import com.example.akshay.tabbedactivity.model.Poll;
 
 import java.util.ArrayList;
 
@@ -35,7 +36,7 @@ public class PollListAdapter extends RecyclerView.Adapter<PollListAdapter.MyView
     public void onBindViewHolder(@NonNull MyViewHolder holder, int i) {
 
         Poll poll = list.get(i);
-        holder.groupname.setText(poll.getGroupName());
+        holder.gropname.setText(poll.getGroupName());
 
         final int index = i;
         holder.avatar.setOnClickListener(new View.OnClickListener() {
@@ -53,13 +54,13 @@ public class PollListAdapter extends RecyclerView.Adapter<PollListAdapter.MyView
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView groupname;
+        TextView gropname;
         ImageView avatar, delete;
 
         MyViewHolder(@NonNull View view) {
             super(view);
 
-            groupname = view.findViewById(R.id.groupName);
+            gropname = view.findViewById(R.id.groupName);
             avatar = view.findViewById(R.id.image);
             delete = view.findViewById(R.id.deleteImage);
         }
