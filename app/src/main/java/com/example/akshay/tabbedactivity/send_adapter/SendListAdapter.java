@@ -1,4 +1,4 @@
-package com.example.akshay.tabbedactivity.adapters;
+package com.example.akshay.tabbedactivity.send_adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -6,20 +6,23 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.akshay.tabbedactivity.model.Poll;
+
+import com.example.akshay.tabbedactivity.send_model.send;
 import com.example.akshay.tabbedactivity.R;
 
 import java.util.ArrayList;
 
-public class PollListAdapter extends RecyclerView.Adapter<PollListAdapter.MyViewHolder> {
+public class SendListAdapter extends RecyclerView.Adapter<SendListAdapter.MyViewHolder> {
 
     private Context context;
-    private ArrayList<Poll> list;
+    private ArrayList<send> list;
 
-    public PollListAdapter(Context context, ArrayList<Poll> list) {
+    public SendListAdapter(Context context, ArrayList<send> list) {
         this.context = context;
         this.list = list;
     }
@@ -27,24 +30,20 @@ public class PollListAdapter extends RecyclerView.Adapter<PollListAdapter.MyView
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(context).inflate(R.layout.poll_list_card, viewGroup, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.send_list_card, viewGroup, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int i) {
 
-        Poll poll = list.get(i);
+        send poll = list.get(i);
         holder.groupname.setText(poll.getGroupName());
 
         final int index = i;
-        holder.avatar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context, "OnClick " + index, Toast.LENGTH_SHORT).show();
-            }
-        });
+
     }
+
 
     @Override
     public int getItemCount() {
@@ -54,14 +53,15 @@ public class PollListAdapter extends RecyclerView.Adapter<PollListAdapter.MyView
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView groupname;
-        ImageView avatar, delete;
+        ImageView avatar;
+        CheckBox cb;
 
         MyViewHolder(@NonNull View view) {
             super(view);
 
             groupname = view.findViewById(R.id.groupName);
             avatar = view.findViewById(R.id.image);
-            delete = view.findViewById(R.id.deleteImage);
+            cb = view.findViewById(R.id.checkBox);
         }
     }
 }

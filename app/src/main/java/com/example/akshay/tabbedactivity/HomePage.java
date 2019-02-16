@@ -98,6 +98,7 @@ public class HomePage extends AppCompatActivity implements Tab1Pollfeed.OnFragme
             // Return a PlaceholderFragment (defined as a static inner class below).
             switch (position){
                 case 0:
+
                     Tab1Pollfeed tab1 = new Tab1Pollfeed();
                     return tab1;
                 case 1:
