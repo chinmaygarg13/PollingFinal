@@ -61,6 +61,8 @@ public class Tab1Pollfeed extends Fragment {
         Opt opt = new Opt(false, "This is an Option");
         opts.add(opt);
         opts.add(opt);
+        opts.add(opt);
+
 
         Poll poll = new Poll("Group name", "Question", opts, "timestamp", "expiry date");
         list.add(poll);
