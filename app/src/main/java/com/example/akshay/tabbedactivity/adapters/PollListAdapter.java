@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.akshay.tabbedactivity.R;
+import com.example.akshay.tabbedactivity.model.Opt;
 import com.example.akshay.tabbedactivity.model.Poll;
 
 import java.util.ArrayList;
@@ -29,14 +30,24 @@ public class PollListAdapter extends RecyclerView.Adapter<PollListAdapter.MyView
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(context).inflate(R.layout.poll_list_card, viewGroup, false);
+
+        //RecyclerView recyclerView = view.findViewById(R.id.option_recycleview);
+        //getdata(recyclerView);
         return new MyViewHolder(view);
+    }
+
+    private void getdata(RecyclerView recyclerView) {
+        ArrayList<Opt> list = new ArrayList<>();
+        Opt opt = new Opt(false, "This is an Option");
+        list.add(opt);
+        list.add(opt);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int i) {
 
         Poll poll = list.get(i);
-        holder.gropname.setText(poll.getGroupName());
+        holder.groupname.setText(poll.getGroupName());
 
         final int index = i;
         holder.avatar.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +56,7 @@ public class PollListAdapter extends RecyclerView.Adapter<PollListAdapter.MyView
                 Toast.makeText(context, "OnClick " + index, Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     @Override
@@ -54,13 +66,13 @@ public class PollListAdapter extends RecyclerView.Adapter<PollListAdapter.MyView
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView gropname;
+        TextView groupname;
         ImageView avatar, delete;
 
         MyViewHolder(@NonNull View view) {
             super(view);
 
-            gropname = view.findViewById(R.id.groupName);
+            groupname = view.findViewById(R.id.groupName);
             avatar = view.findViewById(R.id.image);
             delete = view.findViewById(R.id.deleteImage);
         }
