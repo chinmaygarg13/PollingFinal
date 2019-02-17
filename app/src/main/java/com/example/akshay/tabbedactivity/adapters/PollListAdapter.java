@@ -2,6 +2,8 @@ package com.example.akshay.tabbedactivity.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +20,7 @@ import java.util.ArrayList;
 
 public class PollListAdapter extends RecyclerView.Adapter<PollListAdapter.MyViewHolder> {
 
-    private Context context;
+    public Context context;
     private ArrayList<Poll> list;
 
     public PollListAdapter(Context context, ArrayList<Poll> list) {
@@ -30,17 +32,7 @@ public class PollListAdapter extends RecyclerView.Adapter<PollListAdapter.MyView
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(context).inflate(R.layout.poll_list_card, viewGroup, false);
-
-        //RecyclerView recyclerView = view.findViewById(R.id.option_recycleview);
-        //getdata(recyclerView);
         return new MyViewHolder(view);
-    }
-
-    private void getdata(RecyclerView recyclerView) {
-        ArrayList<Opt> list = new ArrayList<>();
-        Opt opt = new Opt(false, "This is an Option");
-        list.add(opt);
-        list.add(opt);
     }
 
     @Override
@@ -57,10 +49,15 @@ public class PollListAdapter extends RecyclerView.Adapter<PollListAdapter.MyView
             }
         });
 
+        OptionListAdapter adapter = new OptionListAdapter(context, poll.getOptions());
+        holder.recyclerView.setAdapter(adapter);
+        holder.recyclerView.setLayoutManager(new LinearLayoutManager(context));
+
     }
 
     @Override
     public int getItemCount() {
+
         return list.size();
     }
 
@@ -68,6 +65,7 @@ public class PollListAdapter extends RecyclerView.Adapter<PollListAdapter.MyView
 
         TextView groupname;
         ImageView avatar, delete;
+        RecyclerView recyclerView;
 
         MyViewHolder(@NonNull View view) {
             super(view);
@@ -75,6 +73,11 @@ public class PollListAdapter extends RecyclerView.Adapter<PollListAdapter.MyView
             groupname = view.findViewById(R.id.groupName);
             avatar = view.findViewById(R.id.image);
             delete = view.findViewById(R.id.deleteImage);
+            recyclerView = view.findViewById(R.id.option_recycleview);
         }
+    }
+
+    public Context getContext() {
+        return context;
     }
 }

@@ -16,13 +16,14 @@ import com.example.akshay.tabbedactivity.model.Opt;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OptionListAdapter extends RecyclerView.Adapter<OptionListAdapter.MyViewHolder> {
 
     private Context context;
-    private ArrayList<Opt> list;
+    private List<Opt> list;
 
-    public OptionListAdapter(Context context, ArrayList<Opt> list) {
+    public OptionListAdapter(Context context, List<Opt> list) {
         this.context = context;
         this.list = list;
     }

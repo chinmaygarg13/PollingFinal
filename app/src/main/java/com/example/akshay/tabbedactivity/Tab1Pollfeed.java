@@ -1,5 +1,6 @@
 package com.example.akshay.tabbedactivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.akshay.tabbedactivity.R;
 
+import com.example.akshay.tabbedactivity.adapters.OptionListAdapter;
 import com.example.akshay.tabbedactivity.adapters.PollListAdapter;
 import com.example.akshay.tabbedactivity.model.Opt;
 import com.example.akshay.tabbedactivity.model.Poll;
@@ -55,31 +57,24 @@ public class Tab1Pollfeed extends Fragment {
 
     private void getData(RecyclerView recyclerView) {
         ArrayList<Poll> list = new ArrayList<>();
-
-        RecyclerView recyclerView1 = recyclerView.findViewById(R.id.option_recycleview);
-
-        ArrayList<Opt> list1 = new ArrayList<>();
+        ArrayList<Opt> opts = new ArrayList<>();
         Opt opt = new Opt(false, "This is an Option");
-        list1.add(opt);
-        list1.add(opt);
+        opts.add(opt);
+        opts.add(opt);
 
-        List<String> strings = new ArrayList<>();
-        strings.add("Option 1");
-
-
-        Poll poll = new Poll("Group name", "Question", list1, "timestamp", "expiry date");
+        Poll poll = new Poll("Group name", "Question", opts, "timestamp", "expiry date");
         list.add(poll);
         list.add(poll);
         list.add(poll);
         list.add(poll);
         list.add(poll);
-
 
         PollListAdapter adapter = new PollListAdapter(getContext(), list);
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
         recyclerView.setHasFixedSize(true);
+
 
     }
 }
