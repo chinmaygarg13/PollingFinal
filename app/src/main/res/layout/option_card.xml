@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <android.support.v7.widget.AppCompatCheckBox
+            <CheckBox
                 android:id="@+id/checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -33,7 +33,9 @@
                 android:textSize="16sp"
                 android:textColor="@android:color/black"
                 android:text="This is an option"
+                android:id="@+id/option_text"
                 />
+
 
         </android.support.constraint.ConstraintLayout>
 
