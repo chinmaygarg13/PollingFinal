@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Poll {
 
-    public Poll(String groupName, String question, List<String> options, String timestamp, String expiryDate) {
+    public Poll(String groupName, String question, List<Opt> options, String timestamp, String expiryDate) {
         this.groupName = groupName;
         this.question = question;
         this.options = options;
@@ -14,7 +14,7 @@ public class Poll {
 
     private String groupName;
     private String question;
-    private List<String> options;
+    private List<Opt> options;
     private String timestamp;
     private String expiryDate;
 
@@ -34,11 +34,11 @@ public class Poll {
         this.question = question;
     }
 
-    public List<String> getOptions() {
+    public List<Opt> getOptions() {
         return options;
     }
 
-    public void setOptions(List<String> options) {
+    public void setOptions(List<Opt> options) {
         this.options = options;
     }
 

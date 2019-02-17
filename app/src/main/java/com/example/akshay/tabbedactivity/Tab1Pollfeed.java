@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.example.akshay.tabbedactivity.R;
 
 import com.example.akshay.tabbedactivity.adapters.PollListAdapter;
+import com.example.akshay.tabbedactivity.model.Opt;
 import com.example.akshay.tabbedactivity.model.Poll;
 
 import java.util.ArrayList;
@@ -55,11 +56,18 @@ public class Tab1Pollfeed extends Fragment {
     private void getData(RecyclerView recyclerView) {
         ArrayList<Poll> list = new ArrayList<>();
 
+        RecyclerView recyclerView1 = recyclerView.findViewById(R.id.option_recycleview);
+
+        ArrayList<Opt> list1 = new ArrayList<>();
+        Opt opt = new Opt(false, "This is an Option");
+        list1.add(opt);
+        list1.add(opt);
+
         List<String> strings = new ArrayList<>();
         strings.add("Option 1");
 
 
-        Poll poll = new Poll("Group name", "Question", strings, "timestamp", "expiry date");
+        Poll poll = new Poll("Group name", "Question", list1, "timestamp", "expiry date");
         list.add(poll);
         list.add(poll);
         list.add(poll);
