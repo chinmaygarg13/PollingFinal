@@ -1,4 +1,4 @@
-package com.example.akshay.tabbedactivity;
+package com.example.akshay.PollingApp;
 
 import android.net.Uri;
 import android.support.v4.app.Fragment;
@@ -14,7 +14,7 @@ public class Tab1Edit extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.tab1edit, container, false);
+        View rootView = inflater.inflate(com.example.akshay.PollingApp.R.layout.tab1edit, container, false);
 
         return rootView;
     }

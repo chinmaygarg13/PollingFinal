@@ -1,6 +1,4 @@
-package com.example.akshay.tabbedactivity.model;
-
-import android.widget.CheckBox;
+package com.example.akshay.PollingApp.model;
 
 public class Opt {
     public Opt(boolean checkBox, String option_text) {

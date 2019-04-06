@@ -1,15 +1,16 @@
-package com.example.akshay.tabbedactivity.model;
+package com.example.akshay.PollingApp.model;
 
 import java.util.List;
 
 public class Poll {
 
-    public Poll(String groupName, String question, List<Opt> options, String timestamp, String expiryDate) {
+    public Poll(String groupName, String question, List<Opt> options, String timestamp, String expiryDate,String asker) {
         this.groupName = groupName;
         this.question = question;
         this.options = options;
         this.timestamp = timestamp;
         this.expiryDate = expiryDate;
+        this.asker=asker;
     }
 
     private String groupName;
@@ -17,6 +18,13 @@ public class Poll {
     private List<Opt> options;
     private String timestamp;
     private String expiryDate;
+
+    public String getAsker() {
+        return asker;
+    }
+
+
+    private  String asker;
 
     public String getGroupName() {
         return groupName;

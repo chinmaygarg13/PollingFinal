@@ -1,4 +1,4 @@
-package com.example.akshay.tabbedactivity.send_adapter;
+package com.example.akshay.PollingApp.send_adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -6,14 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.akshay.tabbedactivity.send_model.send;
-import com.example.akshay.tabbedactivity.R;
+import com.example.akshay.PollingApp.send_model.send;
+import com.example.akshay.PollingApp.R;
 
 import java.util.ArrayList;
 

@@ -1,20 +1,22 @@
-package com.example.akshay.tabbedactivity.adapters;
+package com.example.akshay.PollingApp.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.akshay.tabbedactivity.R;
-import com.example.akshay.tabbedactivity.model.Opt;
-import com.example.akshay.tabbedactivity.model.Poll;
+import com.example.akshay.PollingApp.R;
+import com.example.akshay.PollingApp.model.Poll;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -40,7 +42,8 @@ public class PollListAdapter extends RecyclerView.Adapter<PollListAdapter.MyView
 
         Poll poll = list.get(i);
         holder.groupname.setText(poll.getGroupName());
-
+        holder.question.setText(poll.getQuestion());
+        holder.postername.setText(poll.getAsker());
         final int index = i;
         holder.avatar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,9 +67,12 @@ public class PollListAdapter extends RecyclerView.Adapter<PollListAdapter.MyView
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView groupname;
-        ImageView avatar, delete;
+        ImageView avatar;
+                ImageButton delete;
         RecyclerView recyclerView;
-
+        TextView question;
+        TextView postername;
+        FloatingActionButton send ;
         MyViewHolder(@NonNull View view) {
             super(view);
 
@@ -74,6 +80,9 @@ public class PollListAdapter extends RecyclerView.Adapter<PollListAdapter.MyView
             avatar = view.findViewById(R.id.image);
             delete = view.findViewById(R.id.deleteImage);
             recyclerView = view.findViewById(R.id.option_recycleview);
+            question = view.findViewById(R.id.question);
+            postername = view.findViewById(R.id.posterName);
+            send = view.findViewById(R.id.fabsend);
         }
     }
 

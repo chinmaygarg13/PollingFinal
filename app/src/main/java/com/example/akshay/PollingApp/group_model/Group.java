@@ -1,4 +1,4 @@
-package com.example.akshay.tabbedactivity.group_model;
+package com.example.akshay.PollingApp.group_model;
 
 public class Group {
     public   Group (String groupname){

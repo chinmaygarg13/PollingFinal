@@ -1,4 +1,4 @@
-package com.example.akshay.tabbedactivity;
+package com.example.akshay.PollingApp;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,4 +1,4 @@
-package com.example.akshay.tabbedactivity;
+package com.example.akshay.PollingApp;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ public class Tab3Results extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.tab3results, container, false);
+        View rootView = inflater.inflate(com.example.akshay.PollingApp.R.layout.tab3results, container, false);
 
         return rootView;
     }

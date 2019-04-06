@@ -1,6 +1,4 @@
-package com.example.akshay.tabbedactivity.send_model;
-
-import java.util.List;
+package com.example.akshay.PollingApp.send_model;
 
 public class send {
 

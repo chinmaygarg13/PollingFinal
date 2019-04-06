@@ -1,4 +1,4 @@
-package com.example.akshay.tabbedactivity.adapters;
+package com.example.akshay.PollingApp.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -7,15 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.akshay.tabbedactivity.R;
-import com.example.akshay.tabbedactivity.model.Opt;
+import com.example.akshay.PollingApp.R;
+import com.example.akshay.PollingApp.model.Opt;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class OptionListAdapter extends RecyclerView.Adapter<OptionListAdapter.MyViewHolder> {

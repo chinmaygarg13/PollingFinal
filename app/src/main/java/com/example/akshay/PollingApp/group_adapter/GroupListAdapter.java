@@ -1,14 +1,15 @@
-package com.example.akshay.tabbedactivity.group_adapter;
+package com.example.akshay.PollingApp.group_adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.example.akshay.tabbedactivity.R;
-import com.example.akshay.tabbedactivity.group_model.Group;
+import com.example.akshay.PollingApp.R;
+import com.example.akshay.PollingApp.group_model.Group;
 
 import java.util.ArrayList;
 
@@ -31,9 +32,8 @@ public class GroupListAdapter extends RecyclerView.Adapter<GroupListAdapter.MyVi
     @Override
     public void onBindViewHolder(MyViewHolder holder,int i){
         Group  group =  list.get(i);
-        holder.groupname.setText(group.getGroupname());
-        final int index = i;
 
+        holder.groupname.setText(group.getGroupname());
     }
     @Override
     public  int getItemCount(){
