@@ -1,6 +1,7 @@
 package com.example.akshay.PollingApp;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class PollDB {
 
@@ -9,6 +10,16 @@ public class PollDB {
     ArrayList<String> listofoptions = new ArrayList<>();
     String Askedtime;
     String Expirytime;
+
+    public Map<String, String> getResponses() {
+        return responses;
+    }
+
+    public void setResponses(Map<String, String> responses) {
+        this.responses = responses;
+    }
+
+    Map<String,String> responses;
 
     public String getAsker() {
         return Asker;
@@ -56,13 +67,15 @@ public class PollDB {
         this.Expirytime=null;
         this.listofoptions=null;
         this.Questions=null;
+        this.responses=null;
     }
 
-    public PollDB(String asker, String questions, ArrayList<String> listofoptions, String askedtime, String expirytime) {
-        Asker = asker;
-        Questions = questions;
+    public PollDB(String asker, String questions, ArrayList<String> listofoptions, String askedtime, String expirytime,Map<String,String >responses) {
+        this.Asker = asker;
+        this.Questions = questions;
         this.listofoptions = listofoptions;
-        Askedtime = askedtime;
-        Expirytime = expirytime;
+        this.Askedtime = askedtime;
+        this.Expirytime = expirytime;
+        this.responses=responses;
     }
 }

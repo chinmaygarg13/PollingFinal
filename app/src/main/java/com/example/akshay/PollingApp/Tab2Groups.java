@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.example.akshay.PollingApp.group_adapter.GroupListAdapter;
 import com.example.akshay.PollingApp.group_model.Group;
+import com.example.akshay.PollingApp.model.Poll;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,12 +37,11 @@ import java.util.Map;
 public class Tab2Groups extends Fragment {
 DatabaseReference dbreferuser;
 DatabaseReference dbrefergroup;
-ArrayList<String> userlistofgroups = Tab1Pollfeed.getListofgroups();
-String username = LoginActivity.returnemail();
+ String username = LoginActivity.returnemail();
 boolean flag=false;
 private String m_text;
 private  String g_id;
-    ArrayList<Group> list = new ArrayList<>();
+boolean flag1=false;
     public interface OnFragmentInteractionListener{
         public void onFragmentInteraction(Uri uri);
     }
@@ -75,7 +75,7 @@ private  String g_id;
                                         GroupDB groupobj = i.getValue(GroupDB.class);
 
                                         if(g_id.equals(groupobj.gid)){
-                                            Toast.makeText(getContext(), "You have entered a pre existing ID Try another one ", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getActivity(), "You have entered a pre existing ID Try another one ", Toast.LENGTH_SHORT).show();
                                             flag=true;
                                             break;
                                         }
@@ -87,11 +87,14 @@ private  String g_id;
 
                                         ArrayList<String> listofusers = new ArrayList<>();
                                         listofusers.add(LoginActivity.returnemail());
+                                        listofusers.add("demo");
                                         final ArrayList<String> listofoptions = new ArrayList<>();
                                         listofoptions.add("Sample Option 1");
                                         listofoptions.add("Sample Option 2");
+                                        HashMap<String,String>responses =new HashMap<>();
+                                        responses.put("demo","0");
 
-                                        PollDB polldb = new PollDB(LoginActivity.returnemail(),"This is a sample question",listofoptions,"00:00 Pm","00:00 Pm");
+                                        PollDB polldb = new PollDB(LoginActivity.returnemail(),"This is a sample question",listofoptions,"123456789123","123456789123",responses);
                                         ArrayList<PollDB> polllist = new ArrayList<>();
                                         polllist.add(polldb);
 
@@ -169,19 +172,21 @@ private  String g_id;
         getData(recyclerView,view);
 
     }
-
-    private void getData(RecyclerView recyclerView,View view){
-
-
-
-
+    ArrayList<String> listofusersforaddcode = new ArrayList<>();
+    ArrayList<PollDB> listofpollsforaddcode = new ArrayList<>();
+    String groupidforaddcode;
+     private void getData(RecyclerView recyclerView,View view){
 
 
 
 
 
+
+
+//
+//
 //        Group group = new Group("Group Name");
-//        String username = "malav2";
+//        String username2 = "malav2";
 //        ArrayList<String> hm = new ArrayList<>();
 //        hm.add("CS321");
 //        hm.add("HS311");
@@ -189,9 +194,9 @@ private  String g_id;
 //        hm.add("MA312");
 //
 //
-//        UserDB userdb = new UserDB(username,hm);
+//        UserDB userdb = new UserDB(username2,hm);
 ////        Log.d("asdf");
-//        dbrefer.child(username).setValue(userdb);
+//        dbreferuser.child(username2).setValue(userdb);
 //
 //        String username1 = "garg2";
 //        ArrayList<String> hm1 = new ArrayList<>();
@@ -200,14 +205,16 @@ private  String g_id;
 //        hm1.add("CS322");
 //        hm1.add("MA312");
 //        UserDB userdb1 = new UserDB(username1,hm1);
-//        dbrefer.child(username1).setValue(userdb1);
+//        dbreferuser.child(username1).setValue(userdb1);
 
+        final ArrayList<Group> list = new ArrayList<>();
         final GroupListAdapter adapter = new GroupListAdapter(getContext(),list);
         Log.d("ramukaka", "onDataChange: ");
         dbreferuser.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Log.d("aajabeta", "onDataChange: ");
+                list.clear();
                 for(DataSnapshot i :   dataSnapshot.getChildren()){
                     Log.d("chaumu", i.toString());
 
@@ -218,7 +225,7 @@ private  String g_id;
 
 
 
-                    ArrayList<Group> locallist = new ArrayList<>();
+//                    ArrayList<Group> locallist = new ArrayList<>();
                     // Log.d("asdf",userobj.toString());
                     if(userobj.username.equals(username)){
                         Log.d("trymytry",  username);
@@ -230,16 +237,20 @@ private  String g_id;
 
 
 
-                            locallist.add(tempgrp);
-                            Log.d("kkrjeetgayi", tempgrp.toString());
+                            list.add(tempgrp);
+                            adapter.notifyDataSetChanged();
+                         //   Log.d("kkrjeetgayi", tempgrp.toString());
 
                         }
-                        list = locallist;
-                        adapter.notifyDataSetChanged();
+
+                        Log.d("kkrjeetgayi", list.toString());
+
 
                     }
 
                 }
+
+
 
             }
 
@@ -265,6 +276,73 @@ private  String g_id;
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         m_text = input.getText().toString();
+
+
+                    if(!m_text.equals(null)) {
+
+                        dbrefergroup.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                listofusersforaddcode.clear();
+                                listofpollsforaddcode.clear();
+                                for (DataSnapshot i : dataSnapshot.getChildren()) {
+                                    GroupDB groupobj = i.getValue(GroupDB.class);
+                                    if (groupobj.gid.equals(m_text)) {
+                                        flag1=true;
+                                        listofusersforaddcode = groupobj.userlist;
+                                        listofpollsforaddcode = groupobj.listofpolls;
+                                        groupidforaddcode = groupobj.gid;
+                                    }
+
+                                }
+                                if(!flag1){
+                                    Toast.makeText(getContext(), "You have entered a Wrong ID ", Toast.LENGTH_LONG).show();
+                                }
+                                else{
+
+
+
+
+                                     dbreferuser.addListenerForSingleValueEvent(new ValueEventListener() {
+                                         @Override
+                                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                for(DataSnapshot i : dataSnapshot.getChildren()){
+                                                    UserDB userobj = i.getValue(UserDB.class);
+                                                    if(userobj.username.equals(LoginActivity.returnemail())){
+                                                        if(!userobj.listofgroups.contains(groupidforaddcode)){
+                                                            listofusersforaddcode.add(LoginActivity.returnemail());
+                                                            GroupDB groupnew = new GroupDB(groupidforaddcode,listofusersforaddcode,listofpollsforaddcode);
+                                                            dbrefergroup.child(groupidforaddcode).setValue(groupnew);
+                                                            userobj.listofgroups.add(groupidforaddcode);
+                                                            UserDB usernew = new UserDB(userobj.username,userobj.listofgroups);
+                                                            dbreferuser.child(userobj.username).setValue(usernew);
+                                                            break;
+                                                        }
+                                                    }
+                                                }
+                                         }
+
+                                         @Override
+                                         public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                         }
+                                     });
+
+                                }
+                                flag1=false;
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+
+                    }
+
+
+
+
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -279,6 +357,8 @@ private  String g_id;
 
 
                 builder.show();
+
+
 
 //                if(m_text.length()>0){
 //                    final DatabaseReference dbreferlcoal;

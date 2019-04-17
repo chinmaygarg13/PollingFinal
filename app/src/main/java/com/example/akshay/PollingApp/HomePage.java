@@ -105,6 +105,7 @@ public class HomePage extends AppCompatActivity implements Tab1Pollfeed.OnFragme
                 case 2:
                     Tab3Results tab3 = new Tab3Results();
                     return tab3;
+
                 default:
                     return null;
             }

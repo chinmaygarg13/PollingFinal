@@ -6,7 +6,7 @@
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="pollfeed">Pollfeed</string>
-    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_login">Poller</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>

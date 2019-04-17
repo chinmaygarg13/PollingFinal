@@ -3,10 +3,12 @@ package com.example.akshay.PollingApp.adapters;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.example.akshay.PollingApp.R;
@@ -33,10 +35,18 @@ public class OptionListAdapter extends RecyclerView.Adapter<OptionListAdapter.My
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int i) {
             Opt opt = list.get(i);
             myViewHolder.checkBox.setActivated(opt.getCheckBox());
             myViewHolder.option.setText(opt.getOption_text());
+
+            myViewHolder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    list.get(i).setCheckBox(isChecked);
+
+                }
+            });
     }
 
 
