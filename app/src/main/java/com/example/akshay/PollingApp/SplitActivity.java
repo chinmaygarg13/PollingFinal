@@ -21,7 +21,7 @@ public class SplitActivity extends AppCompatActivity {
         offline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),HomePage.class));
+                startActivity(new Intent(getApplicationContext(),connections_activity.class));
                 finish();
             }
         });
