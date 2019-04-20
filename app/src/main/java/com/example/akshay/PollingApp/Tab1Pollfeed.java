@@ -1,5 +1,6 @@
 package com.example.akshay.PollingApp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.example.akshay.PollingApp.adapters.PollListAdapter;
 import com.example.akshay.PollingApp.group_model.Group;
@@ -44,13 +46,17 @@ public class Tab1Pollfeed extends Fragment {
     String userid = LoginActivity.returnemail();
     DatabaseReference dbrefergroup;
     DatabaseReference dbreferuser;
+    ProgressDialog nDialog;
 
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tab1pollfeed, container, false);
+
         FloatingActionButton fab = rootView.findViewById(R.id.fab1);
+        nDialog = new ProgressDialog(getActivity());
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +74,13 @@ public class Tab1Pollfeed extends Fragment {
 
         dbrefergroup = FirebaseDatabase.getInstance().getReference("group");
         dbreferuser = FirebaseDatabase.getInstance().getReference("User");
+        nDialog.setMessage("Loading..");
+        nDialog.setTitle("Getting Data");
+        nDialog.setIndeterminate(false);
+        nDialog.setCancelable(true);
+
         getData(recyclerView);
+        nDialog.show();
 
     }
 
@@ -138,6 +150,7 @@ public class Tab1Pollfeed extends Fragment {
         dbreferuser.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                 listofgroups.clear();
                 for (DataSnapshot i : dataSnapshot.getChildren()) {
                     UserDB userobj = i.getValue(UserDB.class);
@@ -147,7 +160,7 @@ public class Tab1Pollfeed extends Fragment {
 
                         for (String str : userobj.listofgroups) {
 
-
+                            if(!str.equals("demo"))
                             listofgroups.add(str);
 
                             //   Log.d("kkrjeetgayi", tempgrp.toString());
@@ -198,12 +211,14 @@ public class Tab1Pollfeed extends Fragment {
 
                     }
                 });
+                nDialog.dismiss();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
+
 
 
         });

@@ -184,13 +184,13 @@ public class Tab2Send extends Fragment {
                     // Log.d("asdf",userobj.toString());
                     if(userobj.username.equals(username)){
                         for(String str : userobj.listofgroups){
-
+                            if(!str.equals("demo")){
                             send tempgrp = new send(str);
 
 
                             list.add(tempgrp);
 
-                            adapter.notifyDataSetChanged();
+                            adapter.notifyDataSetChanged();}
                         }
                     }
 

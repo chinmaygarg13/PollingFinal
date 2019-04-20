@@ -54,7 +54,7 @@ boolean flag1=false;
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                builder.setTitle("ADD GROUP CODE");
+                builder.setTitle("New Group Code");
 
                 final EditText input = new EditText(getActivity());
 
@@ -75,7 +75,7 @@ boolean flag1=false;
                                         GroupDB groupobj = i.getValue(GroupDB.class);
 
                                         if(g_id.equals(groupobj.gid)){
-                                            Toast.makeText(getActivity(), "You have entered a pre existing ID Try another one ", Toast.LENGTH_SHORT).show();
+//                                            Toast.makeText(getActivity(), "You have entered a pre existing ID Try another one ", Toast.LENGTH_SHORT).show();
                                             flag=true;
                                             break;
                                         }
@@ -112,7 +112,7 @@ boolean flag1=false;
                                                         ArrayList<String> locallistofgroups = userobj.listofgroups;
                                                         locallistofgroups.add(g_id);
 
-                                                        UserDB userdb = new UserDB(userobj.username,locallistofgroups);
+                                                        UserDB userdb = new UserDB(userobj.username,locallistofgroups,userobj.getPassword(),userobj.getRollno());
                                                         dbreferuser.child(userobj.username).setValue(userdb);
                                                     }
                                                 }
@@ -230,7 +230,7 @@ boolean flag1=false;
                     if(userobj.username.equals(username)){
                         Log.d("trymytry",  username);
                         for(String str : userobj.listofgroups){
-
+                            if(!str.equals("demo")){
                             Group tempgrp = new Group(str);
 
 
@@ -238,7 +238,7 @@ boolean flag1=false;
 
 
                             list.add(tempgrp);
-                            adapter.notifyDataSetChanged();
+                            adapter.notifyDataSetChanged();}
                          //   Log.d("kkrjeetgayi", tempgrp.toString());
 
                         }
@@ -314,7 +314,7 @@ boolean flag1=false;
                                                             GroupDB groupnew = new GroupDB(groupidforaddcode,listofusersforaddcode,listofpollsforaddcode);
                                                             dbrefergroup.child(groupidforaddcode).setValue(groupnew);
                                                             userobj.listofgroups.add(groupidforaddcode);
-                                                            UserDB usernew = new UserDB(userobj.username,userobj.listofgroups);
+                                                            UserDB usernew = new UserDB(userobj.username,userobj.listofgroups,userobj.getPassword(),userobj.getRollno());
                                                             dbreferuser.child(userobj.username).setValue(usernew);
                                                             break;
                                                         }

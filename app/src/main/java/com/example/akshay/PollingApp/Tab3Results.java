@@ -74,13 +74,13 @@ public class Tab3Results extends Fragment {
                     // Log.d("asdf",userobj.toString());
                     if(userobj.username.equals(username)){
                         for(String str : userobj.listofgroups){
-
+                            if(!str.equals("demo")){
                             result tempgrp = new result(str);
 
 
                             list.add(tempgrp);
 
-                            adapter.notifyDataSetChanged();
+                            adapter.notifyDataSetChanged();}
                         }
                     }
 

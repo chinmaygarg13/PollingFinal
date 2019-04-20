@@ -7,14 +7,36 @@ import java.util.Map;
 public class UserDB {
 String username;
 
+    public String getPassword() {
+        return password;
+    }
 
-    public UserDB(String username, ArrayList<String> listofgroups) {
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRollno() {
+        return Rollno;
+    }
+
+    public void setRollno(String rollno) {
+        Rollno = rollno;
+    }
+
+    String password;
+String Rollno;
+
+    public UserDB(String username, ArrayList<String> listofgroups,String password,String rollno) {
         this.username = username;
         this.listofgroups = listofgroups;
+        this.Rollno=rollno;
+        this.password=password;
     }
     public UserDB(){
         this.listofgroups = null;
         this.username = null;
+        this.password=null;
+        this.Rollno=null;
     }
     //    String[] grouplist  = new String[100];
     ArrayList<String> listofgroups = new ArrayList<>();

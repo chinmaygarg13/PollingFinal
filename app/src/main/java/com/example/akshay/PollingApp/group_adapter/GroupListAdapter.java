@@ -69,7 +69,7 @@ public class GroupListAdapter extends RecyclerView.Adapter<GroupListAdapter.MyVi
                                  }
 
                              }
-                             UserDB userdb = new UserDB(LoginActivity.returnemail(),locallist);
+                             UserDB userdb = new UserDB(LoginActivity.returnemail(),locallist,userobj.getPassword(),userobj.getPassword());
                              dbreferuser.child(LoginActivity.returnemail()).setValue(userdb);
 
                              dbrefergroup.addListenerForSingleValueEvent(new ValueEventListener() {
